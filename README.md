@@ -2,5 +2,5 @@
 
 Please see the [README][] on the [master][] branch.
 
-[README]: docker-camunda-bpm-platform/blob/master/README.md
-[master]: docker-camunda-bpm-platform/
+[README]: https://github.com/camunda/docker-camunda-bpm-platform/blob/master/README.md
+[master]: https://github.com/camunda/docker-camunda-bpm-platform/
