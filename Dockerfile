@@ -1,12 +1,12 @@
 FROM ubuntu:14.04.1
 
-ENV VERSION=7.2.0 \
-    DISTRO=jboss \
-    SERVER=jboss-as-7.2.0.Final \
-    LIB_DIR=/camunda/modules \
-    SERVER_CONFIG=/camunda/standalone/configuration/standalone.xml \
-    NEXUS=https://app.camunda.com/nexus/content/groups/public/ \
-    GITHUB=https://raw.githubusercontent.com/camunda/camunda-bpm-platform/7.2.0
+ENV VERSION 7.2.0
+ENV DISTRO jboss
+ENV SERVER jboss-as-7.2.0.Final
+ENV LIB_DIR /camunda/modules
+ENV SERVER_CONFIG /camunda/standalone/configuration/standalone.xml
+ENV NEXUS https://app.camunda.com/nexus/content/groups/public/
+ENV GITHUB https://raw.githubusercontent.com/camunda/camunda-bpm-platform/7.2.0
 
 # install oracle java
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" > /etc/apt/sources.list.d/oracle-jdk.list && \
