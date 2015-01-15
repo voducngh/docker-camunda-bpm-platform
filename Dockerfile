@@ -1,8 +1,8 @@
 FROM ubuntu:14.04.1
 
 ENV VERSION=7.2.0 \
-    DISTRO=jboss \
-    SERVER=jboss-as-7.2.0.Final \
+    DISTRO=wildfly \
+    SERVER=wildfly-8.1.0.Final \
     LIB_DIR=/camunda/modules \
     SERVER_CONFIG=/camunda/standalone/configuration/standalone.xml \
     NEXUS=https://app.camunda.com/nexus/content/groups/public/ \
@@ -11,9 +11,9 @@ ENV VERSION=7.2.0 \
 # install oracle java
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" > /etc/apt/sources.list.d/oracle-jdk.list && \
     apt-key adv --recv-keys --keyserver keyserver.ubuntu.com EEA14886 && \
-    echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
+    echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
     apt-get update && \
-    apt-get -y install --no-install-recommends oracle-java7-installer xmlstarlet && \
+    apt-get -y install --no-install-recommends oracle-java8-installer xmlstarlet && \
     apt-get clean && \
     rm -rf /var/cache/* /var/lib/apt/lists/*
 
@@ -26,9 +26,9 @@ RUN tar xzf /tmp/camunda-bpm-platform.tar.gz -C /camunda/ server/${SERVER} --str
 
 # add database driver for mysql and postgresql
 ADD ${NEXUS}/mysql/mysql-connector-java/5.1.21/mysql-connector-java-5.1.21.jar ${LIB_DIR}/mysql/mysql-connector-java/main/
-ADD ${GITHUB}/qa/jboss7-runtime/src/main/modules/mysql/mysql-connector-java/main/module.xml ${LIB_DIR}/mysql/mysql-connector-java/main/module.xml
+ADD ${GITHUB}/qa/wildfly-runtime/src/main/modules/mysql/mysql-connector-java/main/module.xml ${LIB_DIR}/mysql/mysql-connector-java/main/module.xml
 ADD ${NEXUS}/org/postgresql/postgresql/9.3-1100-jdbc4/postgresql-9.3-1100-jdbc4.jar ${LIB_DIR}/org/postgresql/postgresql/main/
-ADD ${GITHUB}/qa/jboss7-runtime/src/main/modules/org/postgresql/postgresql/main/module.xml ${LIB_DIR}/org/postgresql/postgresql/main/module.xml
+ADD ${GITHUB}/qa/wildfly-runtime/src/main/modules/org/postgresql/postgresql/main/module.xml ${LIB_DIR}/org/postgresql/postgresql/main/module.xml
 
 # add standalone.xml with database drivers added
 ADD etc/standalone.xml ${SERVER_CONFIG}

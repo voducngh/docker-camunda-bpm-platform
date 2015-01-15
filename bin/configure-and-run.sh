@@ -11,7 +11,7 @@ XML_URL="${XML_CONFIG}/d:connection-url"
 XML_USERNAME="${XML_CONFIG}/d:security/d:user-name"
 XML_PASSWORD="${XML_CONFIG}/d:security/d:password"
 
-XML_ED="xmlstarlet ed -S -L -N d="urn:jboss:domain:datasources:1.1" -u"
+XML_ED="xmlstarlet ed -S -L -N d="urn:jboss:domain:datasources:2.0" -u"
 
 ${XML_ED} "${XML_DRIVER}" -v "${DB_DRIVER}" ${SERVER_CONFIG}
 ${XML_ED} "${XML_URL}" -v "${DB_URL}" ${SERVER_CONFIG}
