@@ -7,6 +7,7 @@ ENV LIB_DIR /camunda/modules
 ENV SERVER_CONFIG /camunda/standalone/configuration/standalone.xml
 ENV NEXUS https://app.camunda.com/nexus/content/groups/public/
 ENV GITHUB https://raw.githubusercontent.com/camunda/camunda-bpm-platform/7.2.0
+ENV LAUNCH_JBOSS_IN_BACKGROUND TRUE
 
 # install oracle java
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" > /etc/apt/sources.list.d/oracle-jdk.list && \
