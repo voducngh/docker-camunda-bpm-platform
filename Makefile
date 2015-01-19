@@ -2,7 +2,7 @@
 # container name while running
 IMAGE_NAME=camunda/camunda-bpm-platform
 TAGS=wildfly-latest wildfly-7.2.0
-NAME=platform
+NAME=camunda
 
 # parent image name
 FROM=$(shell head -n1 Dockerfile | cut -d " " -f 2)
