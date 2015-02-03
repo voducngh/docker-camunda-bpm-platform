@@ -5,6 +5,7 @@ ENV DISTRO jboss
 ENV SERVER jboss-as-7.2.0.Final
 ENV LIB_DIR /camunda/modules
 ENV SERVER_CONFIG /camunda/standalone/configuration/standalone.xml
+ENV JAVA_OPTS -Djboss.bind.address=0.0.0.0 -Djboss.bind.address.management=0.0.0.0
 ENV NEXUS https://app.camunda.com/nexus/content/groups/public/
 ENV GITHUB https://raw.githubusercontent.com/camunda/camunda-bpm-platform/7.2.0
 ENV LAUNCH_JBOSS_IN_BACKGROUND TRUE
@@ -30,9 +31,6 @@ ADD ${NEXUS}/mysql/mysql-connector-java/5.1.21/mysql-connector-java-5.1.21.jar $
 ADD ${GITHUB}/qa/jboss7-runtime/src/main/modules/mysql/mysql-connector-java/main/module.xml ${LIB_DIR}/mysql/mysql-connector-java/main/module.xml
 ADD ${NEXUS}/org/postgresql/postgresql/9.3-1100-jdbc4/postgresql-9.3-1100-jdbc4.jar ${LIB_DIR}/org/postgresql/postgresql/main/
 ADD ${GITHUB}/qa/jboss7-runtime/src/main/modules/org/postgresql/postgresql/main/module.xml ${LIB_DIR}/org/postgresql/postgresql/main/module.xml
-
-# add standalone.xml with database drivers added
-ADD etc/standalone.xml ${SERVER_CONFIG}
 
 # add start script
 ADD bin/configure-and-run.sh /usr/local/bin/configure-and-run.sh
