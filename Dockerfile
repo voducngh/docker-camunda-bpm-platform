@@ -5,7 +5,7 @@ ENV DISTRO wildfly
 ENV SERVER wildfly-8.1.0.Final
 ENV LIB_DIR /camunda/modules
 ENV SERVER_CONFIG /camunda/standalone/configuration/standalone.xml
-ENV JAVA_OPTS -Djboss.bind.address=0.0.0.0 -Djboss.bind.address.management=0.0.0.0
+ENV PREPEND_JAVA_OPTS -Djboss.bind.address=0.0.0.0 -Djboss.bind.address.management=0.0.0.0
 ENV NEXUS https://app.camunda.com/nexus/content/groups/public/
 ENV GITHUB https://raw.githubusercontent.com/camunda/camunda-bpm-platform/7.2.0
 ENV LAUNCH_JBOSS_IN_BACKGROUND TRUE
