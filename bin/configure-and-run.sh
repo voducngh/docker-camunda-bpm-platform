@@ -46,35 +46,37 @@ function add_driver {
     $SERVER_CONFIG
 }
 
-# adding drivers if needed
-if ! driver_defined $H2_MODULE; then
-  echo "Adding H2 driver to $SERVER_CONFIG"
-  add_driver $H2_NAME $H2_MODULE $H2_XA_CLASS
-else
-  echo "H2 driver already defined in $SERVER_CONFIG"
-fi
+if [ -z "$SKIP_DB_CONFIG" ]; then
+  # adding drivers if needed
+  if ! driver_defined $H2_MODULE; then
+    echo "Adding H2 driver to $SERVER_CONFIG"
+    add_driver $H2_NAME $H2_MODULE $H2_XA_CLASS
+  else
+    echo "H2 driver already defined in $SERVER_CONFIG"
+  fi
 
-if ! driver_defined $MYSQL_MODULE; then
-  echo "Adding MySQL driver to $SERVER_CONFIG"
-  add_driver $MYSQL_NAME $MYSQL_MODULE $MYSQL_XA_CLASS
-else
-  echo "MySQL driver already defined in $SERVER_CONFIG"
-fi
+  if ! driver_defined $MYSQL_MODULE; then
+    echo "Adding MySQL driver to $SERVER_CONFIG"
+    add_driver $MYSQL_NAME $MYSQL_MODULE $MYSQL_XA_CLASS
+  else
+    echo "MySQL driver already defined in $SERVER_CONFIG"
+  fi
 
-if ! driver_defined $POSTGRESQL_MODULE; then
-  echo "Adding PostgreSQL driver to $SERVER_CONFIG"
-  add_driver $POSTGRESQL_NAME $POSTGRESQL_MODULE $POSTGRESQL_XA_CLASS
-else
-  echo "PostgreSQL driver already defined in $SERVER_CONFIG"
-fi
+  if ! driver_defined $POSTGRESQL_MODULE; then
+    echo "Adding PostgreSQL driver to $SERVER_CONFIG"
+    add_driver $POSTGRESQL_NAME $POSTGRESQL_MODULE $POSTGRESQL_XA_CLASS
+  else
+    echo "PostgreSQL driver already defined in $SERVER_CONFIG"
+  fi
 
-# configure databse
-echo "Configuring database"
-xmlstarlet ed -L $NAMESPACES \
-  -u "${XML_DRIVER}" -v "${DB_DRIVER}" \
-  -u "${XML_URL}" -v "${DB_URL}" \
-  -u "${XML_USERNAME}" -v "${DB_USERNAME}" \
-  -u "${XML_PASSWORD}" -v "${DB_PASSWORD}" \
-  ${SERVER_CONFIG}
+  # configure database
+  echo "Configuring database"
+  xmlstarlet ed -L $NAMESPACES \
+    -u "${XML_DRIVER}" -v "${DB_DRIVER}" \
+    -u "${XML_URL}" -v "${DB_URL}" \
+    -u "${XML_USERNAME}" -v "${DB_USERNAME}" \
+    -u "${XML_PASSWORD}" -v "${DB_PASSWORD}" \
+    ${SERVER_CONFIG}
+fi
 
 exec /camunda/bin/standalone.sh
