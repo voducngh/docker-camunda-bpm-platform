@@ -10,9 +10,12 @@ poll_log 'JBoss AS 7.2.0.Final "Janus" started in' 'JBoss AS 7.2.0.Final "Janus"
 
 _log "Server started"
 
-grep_log 'Deployed "camunda-example-invoice-7.2.0.war"' || _exit 2 "Process application not deployed"
+grep_log 'Deployed "camunda-example-invoice-7.1.0-Final.war"' || _exit 2 "Process application not deployed"
 
 _log "Process application deployed"
+
+# wait before login
+sleep 3
 
 test_login admin || _exit 3 "Unable to login to admin"
 test_login cockpit || _exit 4 "Unable to login to cockpit"

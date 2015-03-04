@@ -1,6 +1,6 @@
 FROM ubuntu:14.04.1
 
-ENV VERSION 7.2.0
+ENV VERSION 7.1.0-Final
 ENV DISTRO jboss
 ENV SERVER jboss-as-7.2.0.Final
 ENV LIB_DIR /camunda/modules
