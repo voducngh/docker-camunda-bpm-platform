@@ -6,7 +6,7 @@ ENV SERVER wildfly-8.1.0.Final
 ENV LIB_DIR /camunda/modules
 ENV SERVER_CONFIG /camunda/standalone/configuration/standalone.xml
 ENV PREPEND_JAVA_OPTS -Djboss.bind.address=0.0.0.0 -Djboss.bind.address.management=0.0.0.0
-ENV NEXUS https://app.camunda.com/nexus/content/groups/public/
+ENV NEXUS https://app.camunda.com/nexus/content/groups/public
 ENV LAUNCH_JBOSS_IN_BACKGROUND TRUE
 
 # install oracle java
@@ -29,7 +29,7 @@ RUN tar xzf /tmp/camunda-bpm-platform.tar.gz -C /camunda/ server/${SERVER} --str
 ADD bin/* /usr/local/bin/
 
 # add database drivers
-RUN /usr/local/bin/download-database-drivers.sh https://raw.githubusercontent.com/camunda/camunda-bpm-platform/${VERSION}/parent/pom.xml
+RUN /usr/local/bin/download-database-drivers.sh ${NEXUS}/org/camunda/bpm/camunda-parent/${VERSION}/camunda-parent-${VERSION}.pom
 
 EXPOSE 8080
 
