@@ -10,7 +10,7 @@ poll_log 'WildFly 8.1.0.Final "Kenny" started in' 'WildFly 8.1.0.Final "Kenny" s
 
 _log "Server started"
 
-grep_log 'Deployed "camunda-example-invoice-7.3.0-alpha1.war"' || _exit 2 "Process application not deployed"
+grep_log 'Deployed "camunda-example-invoice-7.3.0-' || _exit 2 "Process application not deployed"
 
 _log "Process application deployed"
 
