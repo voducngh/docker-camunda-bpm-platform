@@ -1,6 +1,6 @@
 FROM ubuntu:14.04.1
 
-ENV VERSION 7.3.0-alpha1
+ENV VERSION 7.3.0-alpha2
 ENV DISTRO wildfly
 ENV SERVER wildfly-8.1.0.Final
 ENV LIB_DIR /camunda/modules
@@ -29,7 +29,7 @@ RUN tar xzf /tmp/camunda-bpm-platform.tar.gz -C /camunda/ server/${SERVER} --str
 ADD bin/* /usr/local/bin/
 
 # add database drivers
-RUN /usr/local/bin/download-database-drivers.sh "${NEXUS}?r=public&g=org.camunda.bpm&a=camunda-parent&v=${VERSION}&p=pom"
+RUN /usr/local/bin/download-database-drivers.sh "${NEXUS}?r=public&g=org.camunda.bpm&a=camunda-database-settings&v=${VERSION}&p=pom"
 
 EXPOSE 8080
 
