@@ -2,7 +2,7 @@ FROM ubuntu:14.04.1
 
 ENV VERSION 7.3.0-SNAPSHOT
 ENV DISTRO wildfly
-ENV SERVER wildfly-8.1.0.Final
+ENV SERVER wildfly-8.2.0.Final
 ENV LIB_DIR /camunda/modules
 ENV SERVER_CONFIG /camunda/standalone/configuration/standalone.xml
 ENV PREPEND_JAVA_OPTS -Djboss.bind.address=0.0.0.0 -Djboss.bind.address.management=0.0.0.0
