@@ -1,6 +1,6 @@
 FROM ubuntu:14.04.1
 
-ENV VERSION 7.3.0-alpha3
+ENV VERSION 7.3.0
 ENV DISTRO wildfly
 ENV SERVER wildfly-8.2.0.Final
 ENV LIB_DIR /camunda/modules
