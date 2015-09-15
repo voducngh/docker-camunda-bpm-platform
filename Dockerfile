@@ -1,4 +1,4 @@
-FROM ubuntu:14.04.1
+FROM armv7/armhf-ubuntu:14.04.3
 
 ENV VERSION 7.4.0-SNAPSHOT
 ENV DISTRO tomcat
