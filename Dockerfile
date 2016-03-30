@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-ENV VERSION 7.5.0-alpha2
+ENV VERSION 7.5.0-alpha3
 ENV DISTRO wildfly
 ENV SERVER wildfly-8.2.1.Final
 ENV LIB_DIR /camunda/modules
