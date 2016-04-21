@@ -1,8 +1,9 @@
 FROM ubuntu:latest
 
 ENV VERSION 7.5.0-SNAPSHOT
-ENV DISTRO wildfly
-ENV SERVER wildfly-8.2.1.Final
+ENV GROUP wildfly
+ENV DISTRO wildfly10
+ENV SERVER wildfly-10.0.0.Final
 ENV LIB_DIR /camunda/modules
 ENV SERVER_CONFIG /camunda/standalone/configuration/standalone.xml
 ENV PREPEND_JAVA_OPTS -Djboss.bind.address=0.0.0.0 -Djboss.bind.address.management=0.0.0.0
@@ -19,7 +20,7 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" > /e
     rm -rf /var/cache/* /var/lib/apt/lists/*
 
 # add camunda distro
-ADD ${NEXUS}?r=public&g=org.camunda.bpm.${DISTRO}&a=camunda-bpm-${DISTRO}&v=${VERSION}&p=tar.gz /tmp/camunda-bpm-platform.tar.gz
+ADD ${NEXUS}?r=public&g=org.camunda.bpm.${GROUP}&a=camunda-bpm-${DISTRO}&v=${VERSION}&p=tar.gz /tmp/camunda-bpm-platform.tar.gz
 
 # unpack camunda distro
 WORKDIR /camunda
