@@ -12,10 +12,10 @@ GITHUB="https://raw.githubusercontent.com/camunda/camunda-bpm-platform/master"
 
 mkdir -p $MYSQL_DIR
 wget -O ${MYSQL_DIR}/mysql-connector-java-${MYSQL_VERSION}.jar "${NEXUS}?r=public&g=mysql&a=mysql-connector-java&v=${MYSQL_VERSION}&p=jar"
-wget -P $MYSQL_DIR ${GITHUB}/qa/jboss7-runtime/src/main/modules/mysql/mysql-connector-java/main/module.xml
+wget -P $MYSQL_DIR ${GITHUB}/qa/jboss7-runtime/src/main/common/modules/mysql/mysql-connector-java/main/module.xml
 sed -i "s/@version.mysql@/${MYSQL_VERSION}/g" ${MYSQL_DIR}/module.xml
 
 mkdir -p $POSTGRESQL_DIR
 wget -O ${POSTGRESQL_DIR}/postgresql-${POSTGRESQL_VERSION}.jar "${NEXUS}?r=public&g=org.postgresql&a=postgresql&v=${POSTGRESQL_VERSION}&p=jar"
-wget -P $POSTGRESQL_DIR ${GITHUB}/qa/jboss7-runtime/src/main/modules/org/postgresql/postgresql/main/module.xml
+wget -P $POSTGRESQL_DIR ${GITHUB}/qa/jboss7-runtime/src/main/common/modules/org/postgresql/postgresql/main/module.xml
 sed -i "s/@version.postgresql@/${POSTGRESQL_VERSION}/g" ${POSTGRESQL_DIR}/module.xml
