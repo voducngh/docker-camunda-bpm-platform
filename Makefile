@@ -1,7 +1,7 @@
 # image settings for the docker image name, tags and
 # container name while running
 IMAGE_NAME=camunda/camunda-bpm-platform
-TAGS=jboss-latest jboss-7.5.0
+TAGS=jboss-7.5.0
 NAME=camunda
 
 # parent image name
