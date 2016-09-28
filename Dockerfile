@@ -3,7 +3,7 @@ FROM ubuntu:latest
 ENV VERSION 7.6.0-alpha5
 ENV GROUP wildfly
 ENV DISTRO wildfly10
-ENV SERVER wildfly-10.0.0.Final
+ENV SERVER wildfly-10.1.0.Final
 ENV LIB_DIR /camunda/modules
 ENV SERVER_CONFIG /camunda/standalone/configuration/standalone.xml
 ENV PREPEND_JAVA_OPTS -Djboss.bind.address=0.0.0.0 -Djboss.bind.address.management=0.0.0.0
