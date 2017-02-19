@@ -28,6 +28,9 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" > /e
 RUN wget -O - "${NEXUS}?r=public&g=org.camunda.bpm.${DISTRO}&a=camunda-bpm-${DISTRO}&v=${VERSION}&p=tar.gz" | \
     tar xzf - -C /camunda/ server/${SERVER} --strip 2
 
+# add jboss modules
+COPY modules/ /camunda/modules/
+
 # add scripts
 ADD bin/* /usr/local/bin/
 
