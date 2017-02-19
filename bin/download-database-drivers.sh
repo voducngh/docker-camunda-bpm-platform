@@ -8,7 +8,7 @@ MYSQL_VERSION=$(echo $POM | xmlstarlet sel -t -v //_:version.mysql)
 POSTGRESQL_DIR=${LIB_DIR}/org/postgresql/postgresql/main/
 POSTGRESQL_VERSION=$(echo $POM | xmlstarlet sel -t -v //_:version.postgresql)
 
-GITHUB="https://raw.githubusercontent.com/camunda/camunda-bpm-platform/master"
+GITHUB="https://raw.githubusercontent.com/camunda/camunda-bpm-platform/7.6.0"
 
 mkdir -p $MYSQL_DIR
 wget -O ${MYSQL_DIR}/mysql-connector-java-${MYSQL_VERSION}.jar "${NEXUS}?r=public&g=mysql&a=mysql-connector-java&v=${MYSQL_VERSION}&p=jar"
